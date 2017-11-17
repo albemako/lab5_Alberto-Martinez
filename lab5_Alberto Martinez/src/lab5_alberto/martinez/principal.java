@@ -33,6 +33,9 @@ public class principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        menu_popup = new javax.swing.JPopupMenu();
+        opcion_eliminar = new javax.swing.JMenuItem();
+        opcion_info = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         tf_nombreequipo = new javax.swing.JTextField();
@@ -78,6 +81,22 @@ public class principal extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jt_liga = new javax.swing.JTree();
         jButton10 = new javax.swing.JButton();
+
+        opcion_eliminar.setText("Sacar del equipo");
+        opcion_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcion_eliminarActionPerformed(evt);
+            }
+        });
+        menu_popup.add(opcion_eliminar);
+
+        opcion_info.setText("Mostrar info del jugador");
+        opcion_info.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcion_infoActionPerformed(evt);
+            }
+        });
+        menu_popup.add(opcion_info);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -293,6 +312,11 @@ public class principal extends javax.swing.JFrame {
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Liga Española");
         jt_liga.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jt_liga.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_ligaMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jt_liga);
 
         jButton10.setText("jButton10");
@@ -591,6 +615,27 @@ public class principal extends javax.swing.JFrame {
             modeloARBOL.reload();
     }//GEN-LAST:event_jButton10ActionPerformed
 
+    private void jt_ligaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_ligaMouseClicked
+        if (evt.isMetaDown()) {
+            int row=jt_liga.getClosestRowForLocation(evt.getX(), evt.getY());
+            jt_liga.setSelectionRow(row);
+            Object v1=jt_liga.getSelectionPath().getLastPathComponent();
+            nodo_seleccionado=(DefaultMutableTreeNode)v1;
+            if(nodo_seleccionado.getUserObject() instanceof Jugador){
+                jugador_seleccionado=(Jugador)nodo_seleccionado.getUserObject();
+                menu_popup.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jt_ligaMouseClicked
+
+    private void opcion_infoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion_infoActionPerformed
+        JOptionPane.showMessageDialog(this, "Nombre: "+jugador_seleccionado.getNombre()+ " | Precio: "+jugador_seleccionado.getPrecio()+ " | Posicion: "+jugador_seleccionado.getPosicion()+ " | Habilidad: "+jugador_seleccionado.getHabilidad()+ " | Tecnica: "+jugador_seleccionado.getTecnica()+ " | Resistencia fisica: "+jugador_seleccionado.getResistencia());
+    }//GEN-LAST:event_opcion_infoActionPerformed
+
+    private void opcion_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcion_eliminarActionPerformed
+        JOptionPane.showMessageDialog(this, "No dio tiempo brother :C");
+    }//GEN-LAST:event_opcion_eliminarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -666,6 +711,9 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JSpinner js_resistencia;
     private javax.swing.JSpinner js_tecnica;
     private javax.swing.JTree jt_liga;
+    private javax.swing.JPopupMenu menu_popup;
+    private javax.swing.JMenuItem opcion_eliminar;
+    private javax.swing.JMenuItem opcion_info;
     private javax.swing.JTextField tf_estadio;
     private javax.swing.JTextField tf_nombreequipo;
     private javax.swing.JTextField tf_nombrejugador;
@@ -677,4 +725,6 @@ ArrayList<Jugador>jugadores=new ArrayList();
 ArrayList<Equipo>equipos=new ArrayList();
 ArrayList<Equipo>Liga=new ArrayList();
 ArrayList<Jugador>comprado=new ArrayList();
+DefaultMutableTreeNode nodo_seleccionado;
+Jugador jugador_seleccionado;
 }
