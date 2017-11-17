@@ -8,6 +8,8 @@ package lab5_alberto.martinez;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -72,8 +74,10 @@ public class principal extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jt_liga = new javax.swing.JTree();
+        jButton10 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -251,7 +255,7 @@ public class principal extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addComponent(jLabel15)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,28 +291,39 @@ public class principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Listar", jPanel2);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 685, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 511, Short.MAX_VALUE)
-        );
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Liga Española");
+        jt_liga.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane3.setViewportView(jt_liga);
 
-        jTabbedPane1.addTab("Comprar", jPanel3);
+        jButton10.setText("jButton10");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 685, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(jButton10)))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 511, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jButton10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Arbol", jPanel4);
@@ -327,38 +342,165 @@ public class principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try {
-            jugadores.add(new Jugador(tf_nombrejugador.getText(), Double.parseDouble(tf_precio.getText()), tf_posicion.getText(),true,  (Integer)js_habilidad.getValue(), (Integer)js_tecnica.getValue(), (Integer)js_resistencia.getValue()));
-            JOptionPane.showMessageDialog(this, "Jugador creado con exito!");
-            System.out.println(jugadores);
-            
-            tf_nombrejugador.setText("");
-            tf_precio.setText("");
-            tf_posicion.setText("");
-            js_habilidad.setValue(0);
-            js_tecnica.setValue(0);
-            js_resistencia.setValue(0);
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un error Vuelva a intentar");
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        if (!equipos.isEmpty()) {
+            System.out.println(equipos.get(0).jugadores);
+            System.out.println(equipos.get(0).getPresupuesto());
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            equipos.add(new Equipo(tf_nombreequipo.getText(), Double.parseDouble(tf_presupuesto.getText()), (Integer)js_copas.getValue(), tf_estadio.getText()));
-            JOptionPane.showMessageDialog(this, "Equipo creado con exito!");
-            
-            tf_nombreequipo.setText("");
-            tf_presupuesto.setText("");
-            js_copas.setValue(0);
-            tf_estadio.setText("");
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Ocurrio un error Vuelva a intentar");
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        if (jl_jugadores.getSelectedIndex()>=0&&jl_equipos.getSelectedIndex()>=0) {
+            int response=JOptionPane.showConfirmDialog(this, "Seguro que desea comprar?","Confirmar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+            if(response==JOptionPane.OK_OPTION){
+
+                if(jugadores.get(jl_jugadores.getSelectedIndex()).isDisponible()){
+                    if(equipos.get(jl_equipos.getSelectedIndex()).getPresupuesto()>jugadores.get(jl_jugadores.getSelectedIndex()).getPrecio()){
+                        DefaultListModel modelo=(DefaultListModel) jl_jugadores.getModel();
+                        equipos.get(jl_equipos.getSelectedIndex()).jugadores.add(jugadores.get(jl_jugadores.getSelectedIndex()));
+                        equipos.get(jl_equipos.getSelectedIndex()).setPresupuesto(equipos.get(jl_equipos.getSelectedIndex()).getPresupuesto()-jugadores.get(jl_jugadores.getSelectedIndex()).getPrecio());
+                        jugadores.get(jl_jugadores.getSelectedIndex()).setDisponible(false);
+                        modelo.removeAllElements();
+                        for (int i = 0; i <jugadores.size() ; i++) {
+                            modelo.addElement(jugadores.get(i));
+                        }
+                        JOptionPane.showMessageDialog(this, "El jugador ha sido Comprado correctamente");
+                        jl_jugadores.setModel(modelo);
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Losentimos pero no tiene el equipo no tiene el presupuesto suficiente para este jugador!");
+                    }
+
+                }else{
+                    JOptionPane.showMessageDialog(this, "Losentimos pero el jugador no esta disponible!");
+                }
+
+            }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        if (jl_jugadores.getSelectedIndex()>=0) {
+
+            int response=JOptionPane.showConfirmDialog(this, "Seguro que desea modificar?","Confirmar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+            if(response==JOptionPane.OK_OPTION){
+
+                try {
+                    String nombre;
+                    double precio;
+                    String posicion;
+                    double habilidad;
+                    double tecnica;
+                    double resistencia;
+                    DefaultListModel modelo=(DefaultListModel) jl_jugadores.getModel();
+
+                    nombre=JOptionPane.showInputDialog("Nombre nuevo");
+                    precio=Double.parseDouble(JOptionPane.showInputDialog("Nuevo precio"));
+                    posicion=JOptionPane.showInputDialog("Posicion nueva");
+                    habilidad=Double.parseDouble(JOptionPane.showInputDialog("Nueva habilidad"));
+                    tecnica=Double.parseDouble(JOptionPane.showInputDialog("Nueva tecnica"));
+                    resistencia=Double.parseDouble(JOptionPane.showInputDialog("Nueva resistencia"));
+
+                    jugadores.get(jl_jugadores.getSelectedIndex()).setNombre(nombre);
+                    jugadores.get(jl_jugadores.getSelectedIndex()).setPrecio(precio);
+                    jugadores.get(jl_jugadores.getSelectedIndex()).setPosicion(posicion);
+                    jugadores.get(jl_jugadores.getSelectedIndex()).setHabilidad(habilidad);
+                    jugadores.get(jl_jugadores.getSelectedIndex()).setTecnica(tecnica);
+                    jugadores.get(jl_jugadores.getSelectedIndex()).setResistencia(resistencia);
+
+                    modelo.removeAllElements();
+                    for (int i = 0; i <jugadores.size() ; i++) {
+                        modelo.addElement(jugadores.get(i));
+                    }
+                    JOptionPane.showMessageDialog(this, "El jugador ha sido modificado correctamente");
+                    jl_jugadores.setModel(modelo);
+
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Ocurrio un error vuelva a intentar");
+                }
+            }
+
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        if (jl_jugadores.getSelectedIndex()>=0) {
+            int response=JOptionPane.showConfirmDialog(this, "Seguro de eliminar?","Confirmar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+            if(response==JOptionPane.OK_OPTION){
+
+                DefaultListModel modelo=(DefaultListModel) jl_jugadores.getModel();
+
+                jugadores.remove(jl_jugadores.getSelectedIndex());
+                modelo.removeAllElements();
+                for (int i = 0; i <jugadores.size() ; i++) {
+                    modelo.addElement(jugadores.get(i));
+                }
+                JOptionPane.showMessageDialog(this, "El Jugador ha sido eliminado correctamente");
+                jl_jugadores.setModel(modelo);
+            }
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        if (jl_equipos.getSelectedIndex()>=0) {
+
+            int response=JOptionPane.showConfirmDialog(this, "Seguro que desea modificar?","Confirmar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+            if(response==JOptionPane.OK_OPTION){
+
+                try {
+                    String nombre;
+                    double presupuesto;
+                    int copas;
+                    String estadio;
+                    DefaultListModel modelo=(DefaultListModel) jl_equipos.getModel();
+
+                    nombre=JOptionPane.showInputDialog("Nombre nuevo");
+                    presupuesto=Double.parseDouble(JOptionPane.showInputDialog("Nuevo presupuesto"));
+                    copas=Integer.parseInt(JOptionPane.showInputDialog("Nueva cantidad de copas"));
+                    estadio=JOptionPane.showInputDialog("Nuevo Estadio");
+
+                    equipos.get(jl_equipos.getSelectedIndex()).setNombre(nombre);
+                    equipos.get(jl_equipos.getSelectedIndex()).setPresupuesto(presupuesto);
+                    equipos.get(jl_equipos.getSelectedIndex()).setCopas(copas);
+                    equipos.get(jl_equipos.getSelectedIndex()).setEstadio(estadio);
+
+                    modelo.removeAllElements();
+                    for (int i = 0; i <equipos.size() ; i++) {
+                        modelo.addElement(equipos.get(i));
+                    }
+                    JOptionPane.showMessageDialog(this, "El equipo ha sido modificado correctamente");
+                    jl_equipos.setModel(modelo);
+
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Ocurrio un error vuelva a intentar");
+                }
+            }
+
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if (jl_equipos.getSelectedIndex()>=0) {
+            int response=JOptionPane.showConfirmDialog(this, "Seguro de eliminar?","Confirmar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+            if(response==JOptionPane.OK_OPTION){
+
+                DefaultListModel modelo=(DefaultListModel) jl_equipos.getModel();
+
+                equipos.remove(jl_equipos.getSelectedIndex());
+                modelo.removeAllElements();
+                for (int i = 0; i <equipos.size() ; i++) {
+                    modelo.addElement(equipos.get(i));
+                }
+                JOptionPane.showMessageDialog(this, "El equipo ha sido eliminado correctamente");
+                jl_equipos.setModel(modelo);
+            }
+        }
+
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         //Listar equipos
@@ -369,7 +511,7 @@ public class principal extends javax.swing.JFrame {
         }
 
         jl_equipos.setModel(modelo);
-        
+
         //Listar Jugadores
         DefaultListModel modelo2=(DefaultListModel) jl_jugadores.getModel();
         modelo2.removeAllElements();
@@ -380,165 +522,74 @@ public class principal extends javax.swing.JFrame {
         jl_jugadores.setModel(modelo2);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (jl_equipos.getSelectedIndex()>=0) {
-            int response=JOptionPane.showConfirmDialog(this, "Seguro de eliminar?","Confirmar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            jugadores.add(new Jugador(tf_nombrejugador.getText(), Double.parseDouble(tf_precio.getText()), tf_posicion.getText(),true,  (Integer)js_habilidad.getValue(), (Integer)js_tecnica.getValue(), (Integer)js_resistencia.getValue()));
+            JOptionPane.showMessageDialog(this, "Jugador creado con exito!");
+            System.out.println(jugadores);
 
-            if(response==JOptionPane.OK_OPTION){
+            tf_nombrejugador.setText("");
+            tf_precio.setText("");
+            tf_posicion.setText("");
+            js_habilidad.setValue(0);
+            js_tecnica.setValue(0);
+            js_resistencia.setValue(0);
 
-            DefaultListModel modelo=(DefaultListModel) jl_equipos.getModel();
-
-            equipos.remove(jl_equipos.getSelectedIndex());
-            modelo.removeAllElements();
-            for (int i = 0; i <equipos.size() ; i++) {
-                modelo.addElement(equipos.get(i));
-            }
-            JOptionPane.showMessageDialog(this, "El equipo ha sido eliminado correctamente");
-            jl_equipos.setModel(modelo);
-            }  
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un error Vuelva a intentar");
         }
- 
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        if (jl_jugadores.getSelectedIndex()>=0) {
-            int response=JOptionPane.showConfirmDialog(this, "Seguro de eliminar?","Confirmar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            equipos.add(new Equipo(tf_nombreequipo.getText(), Double.parseDouble(tf_presupuesto.getText()), (Integer)js_copas.getValue(), tf_estadio.getText()));
+            JOptionPane.showMessageDialog(this, "Equipo creado con exito!");
 
-            if(response==JOptionPane.OK_OPTION){
+            tf_nombreequipo.setText("");
+            tf_presupuesto.setText("");
+            js_copas.setValue(0);
+            tf_estadio.setText("");
 
-            DefaultListModel modelo=(DefaultListModel) jl_jugadores.getModel();
-
-            jugadores.remove(jl_jugadores.getSelectedIndex());
-            modelo.removeAllElements();
-            for (int i = 0; i <jugadores.size() ; i++) {
-                modelo.addElement(jugadores.get(i));
-            }
-            JOptionPane.showMessageDialog(this, "El Jugador ha sido eliminado correctamente");
-            jl_jugadores.setModel(modelo);
-            }  
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocurrio un error Vuelva a intentar");
         }
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        if (jl_equipos.getSelectedIndex()>=0) {
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+
+        DefaultTreeModel modeloARBOL=(DefaultTreeModel)jt_liga.getModel();
+            DefaultMutableTreeNode raiz=(DefaultMutableTreeNode)modeloARBOL.getRoot();
+            raiz.removeAllChildren();
+//obtener la persona a guardar
+            DefaultListModel modeloLISTA=(DefaultListModel)jl_equipos.getModel();
             
-            int response=JOptionPane.showConfirmDialog(this, "Seguro que desea modificar?","Confirmar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+            //ver si tiene equipo
+            for (int j = 0; j < equipos.size(); j++) {
+                for (int k = 0; k < equipos.get(j).jugadores.size(); k++) {
+                    int centinela=-1;
+                    for (int i = 0; i < raiz.getChildCount(); i++) {
+                        if (raiz.getChildAt(i).toString().equals(equipos.get(j).getNombre())) {
+                            //si ya existe le agrega al jugador
+                            DefaultMutableTreeNode p=new DefaultMutableTreeNode(equipos.get(j).jugadores.get(k));
+                            ((DefaultMutableTreeNode)raiz.getChildAt(i)).add(p);
+                            centinela=1;
+                        }  
+                    }
+                    if(centinela==-1){
+                            DefaultMutableTreeNode n=new DefaultMutableTreeNode(equipos.get(j).getNombre());
+                            DefaultMutableTreeNode p=new DefaultMutableTreeNode(equipos.get(j).jugadores.get(k));
+                            n.add(p);
+                            raiz.add(n);
 
-            if(response==JOptionPane.OK_OPTION){
-                
-                try {
-                String nombre;
-                double presupuesto;
-                int copas;
-                String estadio;
-                DefaultListModel modelo=(DefaultListModel) jl_equipos.getModel();
-
-                nombre=JOptionPane.showInputDialog("Nombre nuevo");
-                presupuesto=Double.parseDouble(JOptionPane.showInputDialog("Nuevo presupuesto"));
-                copas=Integer.parseInt(JOptionPane.showInputDialog("Nueva cantidad de copas"));
-                estadio=JOptionPane.showInputDialog("Nuevo Estadio");
-                
-                equipos.get(jl_equipos.getSelectedIndex()).setNombre(nombre);
-                equipos.get(jl_equipos.getSelectedIndex()).setPresupuesto(presupuesto);
-                equipos.get(jl_equipos.getSelectedIndex()).setCopas(copas);
-                equipos.get(jl_equipos.getSelectedIndex()).setEstadio(estadio);
-                
-                modelo.removeAllElements();
-                for (int i = 0; i <equipos.size() ; i++) {
-                modelo.addElement(equipos.get(i));
-                }
-                JOptionPane.showMessageDialog(this, "El equipo ha sido modificado correctamente");
-                jl_equipos.setModel(modelo);
-                    
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Ocurrio un error vuelva a intentar");
-                }
-            }
-            
-        }
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        if (jl_jugadores.getSelectedIndex()>=0) {
-            
-            int response=JOptionPane.showConfirmDialog(this, "Seguro que desea modificar?","Confirmar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-
-            if(response==JOptionPane.OK_OPTION){
-                
-                try {
-                String nombre;
-                double precio;
-                String posicion;
-                double habilidad;
-                double tecnica;
-                double resistencia;
-                DefaultListModel modelo=(DefaultListModel) jl_jugadores.getModel();
-
-                nombre=JOptionPane.showInputDialog("Nombre nuevo");
-                precio=Double.parseDouble(JOptionPane.showInputDialog("Nuevo precio"));
-                posicion=JOptionPane.showInputDialog("Posicion nueva");
-                habilidad=Double.parseDouble(JOptionPane.showInputDialog("Nueva habilidad"));
-                tecnica=Double.parseDouble(JOptionPane.showInputDialog("Nueva tecnica"));
-                resistencia=Double.parseDouble(JOptionPane.showInputDialog("Nueva resistencia"));
-                
-                jugadores.get(jl_jugadores.getSelectedIndex()).setNombre(nombre);
-                jugadores.get(jl_jugadores.getSelectedIndex()).setPrecio(precio);
-                jugadores.get(jl_jugadores.getSelectedIndex()).setPosicion(posicion);
-                jugadores.get(jl_jugadores.getSelectedIndex()).setHabilidad(habilidad);
-                jugadores.get(jl_jugadores.getSelectedIndex()).setTecnica(tecnica);
-                jugadores.get(jl_jugadores.getSelectedIndex()).setResistencia(resistencia);
-                
-                modelo.removeAllElements();
-                for (int i = 0; i <jugadores.size() ; i++) {
-                modelo.addElement(jugadores.get(i));
-                }
-                JOptionPane.showMessageDialog(this, "El jugador ha sido modificado correctamente");
-                jl_jugadores.setModel(modelo);
-                    
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Ocurrio un error vuelva a intentar");
-                }
-            }
-            
-        }
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        if (jl_jugadores.getSelectedIndex()>=0&&jl_equipos.getSelectedIndex()>=0) {
-            int response=JOptionPane.showConfirmDialog(this, "Seguro que desea comprar?","Confirmar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-
-            if(response==JOptionPane.OK_OPTION){
-                
-                if(jugadores.get(jl_jugadores.getSelectedIndex()).isDisponible()){
-                    if(equipos.get(jl_equipos.getSelectedIndex()).getPresupuesto()>jugadores.get(jl_jugadores.getSelectedIndex()).getPrecio()){
-                        DefaultListModel modelo=(DefaultListModel) jl_jugadores.getModel();
-                        equipos.get(jl_equipos.getSelectedIndex()).jugadores.add(jugadores.get(jl_jugadores.getSelectedIndex()));
-                        equipos.get(jl_equipos.getSelectedIndex()).setPresupuesto(equipos.get(jl_equipos.getSelectedIndex()).getPresupuesto()-jugadores.get(jl_jugadores.getSelectedIndex()).getPrecio());
-                        jugadores.get(jl_jugadores.getSelectedIndex()).setDisponible(false);
-                        modelo.removeAllElements();
-                        for (int i = 0; i <jugadores.size() ; i++) {
-                        modelo.addElement(jugadores.get(i));
                         }
-                        JOptionPane.showMessageDialog(this, "El jugador ha sido Comprado correctamente");
-                        jl_jugadores.setModel(modelo);
-                    }else{
-                        JOptionPane.showMessageDialog(this, "Losentimos pero no tiene el equipo no tiene el presupuesto suficiente para este jugador!");
-                    } 
                     
-                }else{
-                    JOptionPane.showMessageDialog(this, "Losentimos pero el jugador no esta disponible!");
                 }
-                
-            }
+            
         }
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        if (!equipos.isEmpty()) {
-            System.out.println(equipos.get(0).jugadores);
-            System.out.println(equipos.get(0).getPresupuesto());
-        }
-    }//GEN-LAST:event_jButton9ActionPerformed
+            
+            
+            modeloARBOL.reload();
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -577,6 +628,7 @@ public class principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -602,10 +654,10 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JList<String> jl_equipos;
     private javax.swing.JList<String> jl_jugadores;
@@ -613,6 +665,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JSpinner js_habilidad;
     private javax.swing.JSpinner js_resistencia;
     private javax.swing.JSpinner js_tecnica;
+    private javax.swing.JTree jt_liga;
     private javax.swing.JTextField tf_estadio;
     private javax.swing.JTextField tf_nombreequipo;
     private javax.swing.JTextField tf_nombrejugador;
