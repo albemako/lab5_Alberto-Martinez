@@ -6,6 +6,7 @@
 package lab5_alberto.martinez;
 
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -57,6 +58,20 @@ public class principal extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jl_equipos = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jl_jugadores = new javax.swing.JList<>();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
 
@@ -136,15 +151,138 @@ public class principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Crear", jPanel1);
 
+        jl_equipos.setModel(new DefaultListModel());
+        jScrollPane1.setViewportView(jl_equipos);
+
+        jl_jugadores.setModel(new DefaultListModel());
+        jScrollPane2.setViewportView(jl_jugadores);
+
+        jLabel13.setText("Equipos");
+
+        jLabel14.setText("Jugadores");
+
+        jButton3.setText("Actualizar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Eliminar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Modificar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("Eliminar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Modificar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("Seleccione un equipo, despues seleccione el jugador que desea comprar para ese equipo");
+
+        jButton8.setText("COMPRAR");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jButton9.setText("jButton9");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 685, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(85, 85, 85))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGap(289, 289, 289)
+                                .addComponent(jButton3)
+                                .addGap(98, 98, 98)
+                                .addComponent(jButton9))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(jButton8)
+                                .addGap(31, 31, 31)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(120, 120, 120)
+                            .addComponent(jLabel13)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel14)
+                            .addGap(35, 35, 35)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jLabel15)))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 511, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton9))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel13))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel15)
+                .addGap(8, 8, 8)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6)
+                    .addComponent(jButton5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton7))
+                .addGap(18, 18, 18))
         );
 
         jTabbedPane1.addTab("Listar", jPanel2);
@@ -222,6 +360,186 @@ public class principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        //Listar equipos
+        DefaultListModel modelo=(DefaultListModel) jl_equipos.getModel();
+        modelo.removeAllElements();
+        for (int i = 0; i <equipos.size(); i++) {
+            modelo.addElement(equipos.get(i));
+        }
+
+        jl_equipos.setModel(modelo);
+        
+        //Listar Jugadores
+        DefaultListModel modelo2=(DefaultListModel) jl_jugadores.getModel();
+        modelo2.removeAllElements();
+        for (int i = 0; i <jugadores.size(); i++) {
+            modelo2.addElement(jugadores.get(i));
+        }
+
+        jl_jugadores.setModel(modelo2);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if (jl_equipos.getSelectedIndex()>=0) {
+            int response=JOptionPane.showConfirmDialog(this, "Seguro de eliminar?","Confirmar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+            if(response==JOptionPane.OK_OPTION){
+
+            DefaultListModel modelo=(DefaultListModel) jl_equipos.getModel();
+
+            equipos.remove(jl_equipos.getSelectedIndex());
+            modelo.removeAllElements();
+            for (int i = 0; i <equipos.size() ; i++) {
+                modelo.addElement(equipos.get(i));
+            }
+            JOptionPane.showMessageDialog(this, "El equipo ha sido eliminado correctamente");
+            jl_equipos.setModel(modelo);
+            }  
+        }
+ 
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        if (jl_jugadores.getSelectedIndex()>=0) {
+            int response=JOptionPane.showConfirmDialog(this, "Seguro de eliminar?","Confirmar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+            if(response==JOptionPane.OK_OPTION){
+
+            DefaultListModel modelo=(DefaultListModel) jl_jugadores.getModel();
+
+            jugadores.remove(jl_jugadores.getSelectedIndex());
+            modelo.removeAllElements();
+            for (int i = 0; i <jugadores.size() ; i++) {
+                modelo.addElement(jugadores.get(i));
+            }
+            JOptionPane.showMessageDialog(this, "El Jugador ha sido eliminado correctamente");
+            jl_jugadores.setModel(modelo);
+            }  
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        if (jl_equipos.getSelectedIndex()>=0) {
+            
+            int response=JOptionPane.showConfirmDialog(this, "Seguro que desea modificar?","Confirmar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+            if(response==JOptionPane.OK_OPTION){
+                
+                try {
+                String nombre;
+                double presupuesto;
+                int copas;
+                String estadio;
+                DefaultListModel modelo=(DefaultListModel) jl_equipos.getModel();
+
+                nombre=JOptionPane.showInputDialog("Nombre nuevo");
+                presupuesto=Double.parseDouble(JOptionPane.showInputDialog("Nuevo presupuesto"));
+                copas=Integer.parseInt(JOptionPane.showInputDialog("Nueva cantidad de copas"));
+                estadio=JOptionPane.showInputDialog("Nuevo Estadio");
+                
+                equipos.get(jl_equipos.getSelectedIndex()).setNombre(nombre);
+                equipos.get(jl_equipos.getSelectedIndex()).setPresupuesto(presupuesto);
+                equipos.get(jl_equipos.getSelectedIndex()).setCopas(copas);
+                equipos.get(jl_equipos.getSelectedIndex()).setEstadio(estadio);
+                
+                modelo.removeAllElements();
+                for (int i = 0; i <equipos.size() ; i++) {
+                modelo.addElement(equipos.get(i));
+                }
+                JOptionPane.showMessageDialog(this, "El equipo ha sido modificado correctamente");
+                jl_equipos.setModel(modelo);
+                    
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Ocurrio un error vuelva a intentar");
+                }
+            }
+            
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        if (jl_jugadores.getSelectedIndex()>=0) {
+            
+            int response=JOptionPane.showConfirmDialog(this, "Seguro que desea modificar?","Confirmar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+            if(response==JOptionPane.OK_OPTION){
+                
+                try {
+                String nombre;
+                double precio;
+                String posicion;
+                double habilidad;
+                double tecnica;
+                double resistencia;
+                DefaultListModel modelo=(DefaultListModel) jl_jugadores.getModel();
+
+                nombre=JOptionPane.showInputDialog("Nombre nuevo");
+                precio=Double.parseDouble(JOptionPane.showInputDialog("Nuevo precio"));
+                posicion=JOptionPane.showInputDialog("Posicion nueva");
+                habilidad=Double.parseDouble(JOptionPane.showInputDialog("Nueva habilidad"));
+                tecnica=Double.parseDouble(JOptionPane.showInputDialog("Nueva tecnica"));
+                resistencia=Double.parseDouble(JOptionPane.showInputDialog("Nueva resistencia"));
+                
+                jugadores.get(jl_jugadores.getSelectedIndex()).setNombre(nombre);
+                jugadores.get(jl_jugadores.getSelectedIndex()).setPrecio(precio);
+                jugadores.get(jl_jugadores.getSelectedIndex()).setPosicion(posicion);
+                jugadores.get(jl_jugadores.getSelectedIndex()).setHabilidad(habilidad);
+                jugadores.get(jl_jugadores.getSelectedIndex()).setTecnica(tecnica);
+                jugadores.get(jl_jugadores.getSelectedIndex()).setResistencia(resistencia);
+                
+                modelo.removeAllElements();
+                for (int i = 0; i <jugadores.size() ; i++) {
+                modelo.addElement(jugadores.get(i));
+                }
+                JOptionPane.showMessageDialog(this, "El jugador ha sido modificado correctamente");
+                jl_jugadores.setModel(modelo);
+                    
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Ocurrio un error vuelva a intentar");
+                }
+            }
+            
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        if (jl_jugadores.getSelectedIndex()>=0&&jl_equipos.getSelectedIndex()>=0) {
+            int response=JOptionPane.showConfirmDialog(this, "Seguro que desea comprar?","Confirmar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+            if(response==JOptionPane.OK_OPTION){
+                
+                if(jugadores.get(jl_jugadores.getSelectedIndex()).isDisponible()){
+                    if(equipos.get(jl_equipos.getSelectedIndex()).getPresupuesto()>jugadores.get(jl_jugadores.getSelectedIndex()).getPrecio()){
+                        DefaultListModel modelo=(DefaultListModel) jl_jugadores.getModel();
+                        equipos.get(jl_equipos.getSelectedIndex()).jugadores.add(jugadores.get(jl_jugadores.getSelectedIndex()));
+                        equipos.get(jl_equipos.getSelectedIndex()).setPresupuesto(equipos.get(jl_equipos.getSelectedIndex()).getPresupuesto()-jugadores.get(jl_jugadores.getSelectedIndex()).getPrecio());
+                        jugadores.get(jl_jugadores.getSelectedIndex()).setDisponible(false);
+                        modelo.removeAllElements();
+                        for (int i = 0; i <jugadores.size() ; i++) {
+                        modelo.addElement(jugadores.get(i));
+                        }
+                        JOptionPane.showMessageDialog(this, "El jugador ha sido Comprado correctamente");
+                        jl_jugadores.setModel(modelo);
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Losentimos pero no tiene el equipo no tiene el presupuesto suficiente para este jugador!");
+                    } 
+                    
+                }else{
+                    JOptionPane.showMessageDialog(this, "Losentimos pero el jugador no esta disponible!");
+                }
+                
+            }
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        if (!equipos.isEmpty()) {
+            System.out.println(equipos.get(0).jugadores);
+            System.out.println(equipos.get(0).getPresupuesto());
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -260,10 +578,20 @@ public class principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -276,7 +604,11 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JList<String> jl_equipos;
+    private javax.swing.JList<String> jl_jugadores;
     private javax.swing.JSpinner js_copas;
     private javax.swing.JSpinner js_habilidad;
     private javax.swing.JSpinner js_resistencia;

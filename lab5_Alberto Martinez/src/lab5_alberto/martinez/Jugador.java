@@ -15,16 +15,16 @@ public class Jugador {
     public double precio;
     public String posicion;
     public boolean disponible;
-    public double hablididad;
+    public double habilidad;
     public double tecnica;
     public double resistencia;
 
-    public Jugador(String nombre, double precio, String posicion, boolean disponible, double hablididad, double tecnica, double resistencia) {
+    public Jugador(String nombre, double precio, String posicion, boolean disponible, double habilidad, double tecnica, double resistencia) {
         this.nombre = nombre;
         this.precio = precio;
         this.posicion = posicion;
         this.disponible = disponible;
-        this.hablididad = hablididad;
+        this.habilidad = habilidad;
         this.tecnica = tecnica;
         this.resistencia = resistencia;
     }
@@ -65,12 +65,12 @@ public class Jugador {
         this.disponible = disponible;
     }
 
-    public double getHablididad() {
-        return hablididad;
+    public double getHabilidad() {
+        return habilidad;
     }
 
-    public void setHablididad(double hablididad) {
-        this.hablididad = hablididad;
+    public void setHabilidad(double habilidad) {
+        this.habilidad = habilidad;
     }
 
     public double getTecnica() {
@@ -91,7 +91,14 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return nombre + " (" + posicion + ')';
+        String disp="";
+        if (disponible){
+            disp="Disponible";
+        }else{
+            disp="No Dispoinble";
+        }
+        
+        return "nombre: " + nombre + " | Precio: "+precio+" | Posicion: " + posicion + " | -"+ disp;
     }
     
     

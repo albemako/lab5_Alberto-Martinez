@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Equipo {
     public String nombre;
-    public Double presupuesto;
+    public double presupuesto;
     public int copas;
     public String estadio;
     public ArrayList<Jugador> jugadores=new ArrayList();
@@ -33,11 +33,11 @@ public class Equipo {
         this.nombre = nombre;
     }
 
-    public Double getPresupuesto() {
+    public double getPresupuesto() {
         return presupuesto;
     }
 
-    public void setPresupuesto(Double presupuesto) {
+    public void setPresupuesto(double presupuesto) {
         this.presupuesto = presupuesto;
     }
 
@@ -67,7 +67,7 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return  nombre ;
+        return  nombre + " | Copas: "+copas;
     }
     
     
